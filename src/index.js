@@ -1,9 +1,10 @@
-const { setupStartCommand } = require('./commands');
+const { setUpStartCommand } = require('./commands');
 const { bot } = require('./bot');
 
 
-setupStartCommand();
+// Setting up commands
+setUpStartCommand();
 
+// Running bot
 bot.startPolling();
-
 console.log('Bot is up and running');

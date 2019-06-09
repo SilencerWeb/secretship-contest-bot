@@ -19,7 +19,7 @@ const generateReplyMarkup = () => {
 };
 
 
-const setupStartCommand = () => {
+const setUpStartCommand = () => {
   bot.start(async (context) => {
     const userData = await getUserDataFromMessage(context.update.message);
 
@@ -31,4 +31,4 @@ const setupStartCommand = () => {
 };
 
 
-module.exports = { setupStartCommand };
+module.exports = { setUpStartCommand };
