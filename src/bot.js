@@ -1,5 +1,5 @@
-require('dotenv').config();
 import Telegraf from 'telegraf';
+import { BOT_TOKEN } from './constants';
 
 
-export const bot = new Telegraf(process.env.BOT_TOKEN);
+export const bot = new Telegraf(BOT_TOKEN);
