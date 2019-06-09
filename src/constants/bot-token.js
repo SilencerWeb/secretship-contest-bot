@@ -1,4 +1,7 @@
 require('dotenv').config();
 
 
-export const BOT_TOKEN = process.env.BOT_TOKEN;
+const BOT_TOKEN = process.env.BOT_TOKEN;
+
+
+module.exports = { BOT_TOKEN };

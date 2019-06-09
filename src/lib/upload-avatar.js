@@ -1,7 +1,7 @@
-import FormData from 'form-data';
+const FormData = require('form-data');
 
 
-export const uploadAvatar = (avatar) => {
+const uploadAvatar = (avatar) => {
   const form = new FormData();
   form.append('data', avatar, {
     filename: 'filename.jpg',
@@ -32,3 +32,6 @@ export const uploadAvatar = (avatar) => {
     });
   });
 };
+
+
+module.exports = { uploadAvatar };

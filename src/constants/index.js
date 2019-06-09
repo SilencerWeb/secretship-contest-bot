@@ -1,2 +1,5 @@
-export { BOT_TOKEN } from './bot-token';
-export { WEBSITE_URL } from './website-url';
+const { BOT_TOKEN } = require('./bot-token');
+const { WEBSITE_URL } = require('./website-url');
+
+
+module.exports = { BOT_TOKEN, WEBSITE_URL };

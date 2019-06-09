@@ -1,5 +1,8 @@
-import Telegraf from 'telegraf';
-import { BOT_TOKEN } from './constants';
+const Telegraf = require('telegraf');
+const { BOT_TOKEN } = require('./constants');
 
 
-export const bot = new Telegraf(BOT_TOKEN);
+const bot = new Telegraf(BOT_TOKEN);
+
+
+module.exports = { bot };

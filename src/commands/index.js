@@ -1,1 +1,4 @@
-export { setupStartCommand } from './start';
+const { setupStartCommand } = require('./start');
+
+
+module.exports = { setupStartCommand };

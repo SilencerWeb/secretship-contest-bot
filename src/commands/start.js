@@ -1,6 +1,6 @@
-import { getUserDataFromMessage } from '../lib';
-import { bot } from '../bot';
-import { WEBSITE_URL } from '../constants';
+const { getUserDataFromMessage } = require('../lib/get-user-data-from-message');
+const { bot } = require('../bot');
+const { WEBSITE_URL } = require('../constants');
 
 
 const generateReplyMarkup = () => {
@@ -19,7 +19,7 @@ const generateReplyMarkup = () => {
 };
 
 
-export const setupStartCommand = () => {
+const setupStartCommand = () => {
   bot.start(async (context) => {
     const userData = await getUserDataFromMessage(context.update.message);
 
@@ -29,3 +29,6 @@ export const setupStartCommand = () => {
     );
   });
 };
+
+
+module.exports = { setupStartCommand };

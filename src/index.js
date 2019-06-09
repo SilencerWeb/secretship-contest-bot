@@ -1,5 +1,5 @@
-import { setupStartCommand } from './commands';
-import { bot } from './bot';
+const { setupStartCommand } = require('./commands');
+const { bot } = require('./bot');
 
 
 setupStartCommand();
