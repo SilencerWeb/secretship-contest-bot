@@ -1,4 +1,5 @@
 const { getUploadedLatestAvatar } = require('./get-uploaded-latest-avatar');
+const { startServer } = require('./start-server');
 
 
-module.exports = { getUploadedLatestAvatar };
+module.exports = { getUploadedLatestAvatar, startServer };
