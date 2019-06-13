@@ -1,4 +1,7 @@
-const WEBSITE_URL = 'https://secretship-contest.netlify.com';
+require('dotenv').config();
+
+
+const WEBSITE_URL = process.env.WEBSITE_URL;
 
 
 module.exports = { WEBSITE_URL };

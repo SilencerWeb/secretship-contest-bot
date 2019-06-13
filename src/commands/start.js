@@ -1,4 +1,6 @@
-const { getUserDataFromMessage } = require('../lib/get-user-data-from-message');
+const { getUploadedLatestAvatar } = require('../lib');
+const { getUser, saveUser, updateUser } = require('../api');
+const { compareUsers, getUserDataFromMessage } = require('../utils');
 const { bot } = require('../bot');
 const { WEBSITE_URL } = require('../constants');
 
@@ -18,15 +20,33 @@ const generateReplyMarkup = () => {
   };
 };
 
+const sendGreetingMessage = (context) => {
+  context.reply(
+    'For logging in the website, please, press the button below',
+    { reply_markup: generateReplyMarkup() },
+  );
+};
+
 
 const setUpStartCommand = () => {
   bot.start(async (context) => {
-    const userData = await getUserDataFromMessage(context.update.message);
+    // Sending message first so user wouldn't have to wait
+    sendGreetingMessage(context);
 
-    context.reply(
-      'Hey!\n\nFor logging in the website, please, press the button below',
-      { reply_markup: generateReplyMarkup() },
-    );
+    const userData = getUserDataFromMessage(context.update.message);
+    const user = await getUser(userData.id);
+
+    if (!user) {
+      userData.avatar = await getUploadedLatestAvatar(userData.id);
+      saveUser(userData);
+    } else {
+      const isUserDataUpToDate = await compareUsers({ user, userData });
+
+      if (!isUserDataUpToDate) {
+        userData.avatar = await getUploadedLatestAvatar(userData.id);
+        updateUser(userData);
+      }
+    }
   });
 };
 
