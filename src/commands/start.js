@@ -5,12 +5,12 @@ const { bot } = require('../bot');
 const { WEBSITE_URL } = require('../constants');
 
 
-const generateReplyMarkup = () => {
+const generateReplyMarkup = (context) => {
   return {
     inline_keyboard: [
       [
         {
-          text: 'Login',
+          text: context.i18n.t('loginButtonText'),
           login_url: {
             url: WEBSITE_URL,
           },
@@ -22,8 +22,8 @@ const generateReplyMarkup = () => {
 
 const sendGreetingMessage = (context) => {
   context.reply(
-    'For logging in the website, please, press the button below',
-    { reply_markup: generateReplyMarkup() },
+    context.i18n.t('greetingMessage'),
+    { reply_markup: generateReplyMarkup(context) },
   );
 };
 
