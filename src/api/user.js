@@ -1,9 +1,8 @@
-const axios = require('axios');
-const { API_URL } = require('../constants');
+const { axiosInstance } = require('./axios');
 
 
 const getUser = (userId) => {
-  return axios.get(`${API_URL}/user`, { data: { id: userId } })
+  return axiosInstance.get('/user', { data: { id: userId } })
     .then(({ data: { user } }) => user)
     .catch((error) => {
       console.log(error.response ? error.response.data.message : error);
@@ -12,7 +11,7 @@ const getUser = (userId) => {
 };
 
 const saveUser = (newUser) => {
-  return axios.post(`${API_URL}/user`, newUser)
+  return axiosInstance.post('/user', newUser)
     .then(({ data: { user } }) => user)
     .catch((error) => {
       console.log(error.response ? error.response.data.message : error);
@@ -21,7 +20,7 @@ const saveUser = (newUser) => {
 };
 
 const updateUser = (updatedUser) => {
-  return axios.put(`${API_URL}/user`, updatedUser)
+  return axiosInstance.put('/user', updatedUser)
     .then(({ data: { user } }) => user)
     .catch((error) => {
       console.log(error.response ? error.response.data.message : error);
